@@ -54,10 +54,14 @@ namespace MyWinForm
             using (SqlCommand cmd = new SqlCommand("select name from city", db))
             {
                 var dr = cmd.ExecuteReader();
+                StringBuilder sb = new StringBuilder();
+                sb.AppendLine("name");
                 while (dr.Read())
                 {
+                    sb.AppendLine(dr[0].ToString());
                     listBox1.Items.Add(dr[0].ToString());
                 }
+                File.WriteAllText("city.csv", sb.ToString());
             }
         }
     }
