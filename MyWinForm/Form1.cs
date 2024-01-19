@@ -66,6 +66,7 @@ namespace MyWinForm
             logger.Information("my log info");
             logger.Error("my log error");
             logger.Warning("my log warn");
+            logger.Warning("test");
         }
     }
 }
