@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MyConsole": {
+      "commandName": "Project",
+      "commandLineArgs": "hello step"
+    }
+  }
+}
