@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -51,17 +52,17 @@ namespace MyWinForm
 
         private void button2_Click(object sender, EventArgs e)
         {
-            using (SqlCommand cmd = new SqlCommand("select name from city", db))
+            using (SqlCommand cmd = new SqlCommand("select id, name, population from city", db))
             {
                 var dr = cmd.ExecuteReader();
                 StringBuilder sb = new StringBuilder();
-                sb.AppendLine("name");
+                sb.AppendLine("id;name;population");
                 while (dr.Read())
                 {
-                    sb.AppendLine(dr[0].ToString());
-                    listBox1.Items.Add(dr[0].ToString());
+                    sb.AppendLine($"{dr[0].ToString()};{dr[1].ToString()};{dr[2].ToString()}");
+                    listBox1.Items.Add(dr[1].ToString());
                 }
-                File.WriteAllText("city.csv", sb.ToString());
+                File.WriteAllText("city.csv", sb.ToString(), Encoding.UTF8);               
             }
         }
     }
