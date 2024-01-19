@@ -48,5 +48,17 @@ namespace MyWinForm
         {
             db.Close();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (SqlCommand cmd = new SqlCommand("select name from city", db))
+            {
+                var dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    listBox1.Items.Add(dr[0].ToString());
+                }
+            }
+        }
     }
 }
