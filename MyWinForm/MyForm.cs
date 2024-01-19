@@ -25,7 +25,12 @@ namespace MyWinForm
         {
             using (SqlConnection db = new SqlConnection(config["conStr"]))
             {
-
+                db.Open();
+                if (db.State == ConnectionState.Open)
+                    MessageBox.Show("Connected");
+                else                    
+                    MessageBox.Show("Not connected");
+                db.Close();
             }
         }
     }
