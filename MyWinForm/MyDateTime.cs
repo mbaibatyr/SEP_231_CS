@@ -48,18 +48,25 @@ namespace MyWinForm
 
         private void button3_Click(object sender, EventArgs e)
         {
+            DateTime dt = DateTime.Today;
             Student student = new Student();
-            student.course.teacher.address.street;
-            student?.course?.teacher?.address.street;
+            //student.course.teacher.address.street;
+            //student?.course?.teacher?.address.street;
             if (student != null)
                 student.id = "123";
             if (student is not null)
                 student.id = "123";
             Text = student?.id;
-            Text = null ?? "123";
+            Text = student?.id ?? "123";
+            Text = student?.id != null ? "123" : student?.id;
+        }
 
-
-
+        private void button4_Click(object sender, EventArgs e)
+        {
+            lbDate.Items.Add(DateTime.Today);
+            lbDate.Items.Add(DateTime.Now.ToString("yyyy-MM-dd"));
+            var week = (int)DateTime.Now.AddDays(1).DayOfWeek;
+            lbDate.Items.Add(week);
         }
     }
 
