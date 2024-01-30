@@ -130,8 +130,9 @@ namespace MyWinForm
                 lbLinq.Items.Add(item);
             }
 
-            
 
+            Random rnd = new Random();
+            rnd.Next();
         }
     }
 
