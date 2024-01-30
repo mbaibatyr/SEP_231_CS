@@ -25,15 +25,15 @@ namespace MyWinForm
                 new Car(){Model="Camry", Color="red", Cost=20000000},
                 new Car(){Model="Tucson", Color="red", Cost=15000000},
                 new Car(){Model="Tuareg", Color="Black", Cost=34000000}
-            };            
+            };
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var array_1 = arrayInt.Where(z => z >= 10 && z % 2 != 0);
+            var array_1 = arrayInt.Where(z => z >= 5 && z % 2 != 0);
 
             var array_2 = from arr in arrayInt
-                          where arr >= 10
+                          where arr >= 5
                           where arr % 2 != 0
                           select arr;
 
@@ -55,7 +55,7 @@ namespace MyWinForm
                           select c;
 
             var lstTemp2 = lstCar.Where(z => z.Color == "red");
-                          
+
 
 
             foreach (Car car in lstTemp2)
@@ -68,7 +68,7 @@ namespace MyWinForm
         {
             var lstTemp = from c in lstCar
                           where c.Color == "red"
-                          where c.Cost > 18000000 
+                          where c.Cost > 18000000
                           select new
                           {
                               MyModelCost = c.Model.ToUpper() + " (" + c.Cost + ")",
@@ -98,7 +98,6 @@ namespace MyWinForm
         private void button5_Click(object sender, EventArgs e)
         {
             lbLinq.Items.Add(arrayInt.Contains(5));
-            arrayInt.Where(z => z.Equals(5)).FirstOrDefault();
 
             foreach (var item in arrayInt.Where(z => z.Equals(5)))
             {
@@ -106,6 +105,33 @@ namespace MyWinForm
             }
 
             lbLinq.Items.Add(arrayInt.Where(z => z.Equals(5)).FirstOrDefault());
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            //lbLinq.Items.Add(arrayInt.Count());
+            //lbLinq.Items.Add(arrayInt.Max());
+            //lbLinq.Items.Add(arrayInt.Min());
+            //lbLinq.Items.Add(arrayInt.Average());
+
+            //foreach (var item in arrayInt.Reverse())
+            //{
+            //    lbLinq.Items.Add(item);
+            //}
+
+            //foreach (var item in arrayInt.OrderByDescending(z=>z))
+            //{
+            //    lbLinq.Items.Add(item);
+            //}
+
+            foreach (var item in arrayString_1.Concat(arrayString_2).Distinct())
+            {
+                lbLinq.Items.Add(item);
+            }
+
+            
+
         }
     }
 

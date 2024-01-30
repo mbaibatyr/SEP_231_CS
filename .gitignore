@@ -361,3 +361,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/MyWinForm/Program.cs
+/MyWinForm/FormException.resx
+/MyWinForm/FormException.Designer.cs
+/MyWinForm/FormException.cs
