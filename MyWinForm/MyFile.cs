@@ -150,6 +150,21 @@ namespace MyWinForm
                 wb.SaveAs(Path + "excel2.xlsx");
             }
         }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            using (var wb = new XLWorkbook(Path + "excel.xlsx"))
+            {
+                var ws = wb.Worksheet(1);
+                var rows = ws.RangeUsed().RowsUsed().Skip(1);
+                foreach (var row in rows)
+                {
+                    listBox1.Items.Add($"{row.Cell(1).Value} " +
+                        $"{row.Cell(2).Value} " +
+                        $"{row.Cell(3).Value} ");
+                }
+            }
+        }
     }
 
     class Data
