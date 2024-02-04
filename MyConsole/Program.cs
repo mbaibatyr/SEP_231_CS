@@ -2,13 +2,45 @@
 using Microsoft.Extensions.Configuration;
 using Serilog.Core;
 using Serilog;
+using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Drawing.Charts;
 
 namespace MyConsole
 {
     internal class Program
     {
+        const string Path = @"C:\Users\байбатыровм\Desktop\MyTest\";
         static IConfigurationRoot config;
         static Logger logger;
+
+        static void ToExcel()
+        {
+            using (var wb = new XLWorkbook())
+            {
+                var ws = wb.AddWorksheet("MyReport");
+
+                ws.Cell(1, 1).Value = "param1";
+                ws.Cell(1, 2).Value = "param2";
+                ws.Cell(1, 3).Value = "param3";
+
+                ws.Cell(2, 1).Value = config["param1"];
+                ws.Cell(2, 2).Value = config["param2"];
+                ws.Cell(2, 3).Value = config["param3"];                
+
+                wb.SaveAs(Path + "excel.xlsx");
+            }
+        }
+
+        static void FromExcel()
+        {
+            using (var wb = new XLWorkbook(Path + "excel.xlsx"))
+            {
+                var ws = wb.Worksheet("MyReport");
+                Console.WriteLine(ws.Cell(2, 1).Value);
+                Console.WriteLine(ws.Cell(2, 2).Value);
+                Console.WriteLine(ws.Cell(2, 3).Value);
+            }
+        }
         static void Main(string[] args)
         {
             config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
@@ -17,8 +49,16 @@ namespace MyConsole
                  outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss} [{Level:u3}] {Message:lj}{NewLine}{Exception}")
              .CreateLogger();
 
+            //ToExcel();
+            FromExcel();
 
-            Console.WriteLine(config["param1"]);
+            //logger.Information(config["param1"]);
+            //logger.Information(config["param2"]);
+            //logger.Information(config["param3"]);
+
+            //logger.Error("something wrong");
+
+            //Console.WriteLine("done");
 
 
             //DateTime dtBegin = new DateTime(2024, 1, 1);
