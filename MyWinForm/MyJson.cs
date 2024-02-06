@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,7 +21,33 @@ namespace MyWinForm
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Root tmp = JsonConvert.DeserializeObject<MyData>(json);
+            string json = File.ReadAllText(@"C:\Users\байбатыровм\Desktop\myjson.json");
+            Root root = JsonConvert.DeserializeObject<Root>(json);
+
+            listBox1.Items.Add($"{root.status}");
+            foreach (var item in root.data)
+            {
+                listBox1.Items.Add($"{item.id} {item.employee_name} {item.employee_salary} {item.profile_image} {item.employee_age}");
+            }
+            listBox1.Items.Add($"{root.message}");
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var client = new RestClient("https://dummy.restapiexample.com/api/v1/employees");
+            var request = new RestRequest("");
+            var response = client.ExecuteGet(request);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                Root root = JsonConvert.DeserializeObject<Root>(response.Content);
+
+                listBox1.Items.Add($"{root.status}");
+                foreach (var item in root.data)
+                {
+                    listBox1.Items.Add($"{item.id} {item.employee_name} {item.employee_salary} {item.profile_image} {item.employee_age}");
+                }
+                listBox1.Items.Add($"{root.message}");
+            }
         }
     }
 
