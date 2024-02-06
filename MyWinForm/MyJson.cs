@@ -6,9 +6,12 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Dll = MyDLL;
+
 
 namespace MyWinForm
 {
@@ -35,8 +38,8 @@ namespace MyWinForm
         private void button2_Click(object sender, EventArgs e)
         {
             var client = new RestClient("https://dummy.restapiexample.com/api/v1/employees");
-            var request = new RestRequest("");
-            var response = client.ExecuteGet(request);
+            var request = new RestRequest("", Method.Get);
+            var response = client.Execute(request);
             if (response.StatusCode == System.Net.HttpStatusCode.OK)
             {
                 Root root = JsonConvert.DeserializeObject<Root>(response.Content);
@@ -49,8 +52,24 @@ namespace MyWinForm
                 listBox1.Items.Add($"{root.message}");
             }
         }
-    }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Dll.MyClass myClass = new Dll.MyClass();
+            listBox1.Items.Add(myClass.SayHello("step"));
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Assembly assembly = Assembly.LoadFile("C:\\Users\\байбатыровм\\Source\\Repos\\SEP_231_CS\\MyDLL\\bin\\Debug\\net6.0\\MyDLL.dll");
+            Type type = assembly.GetType("MyDLL.MyClass");
+            MethodInfo sayHello = type.GetMethod("SayHello3213213");
+            object[] Name = { "World" };
+            var instance = Activator.CreateInstance(type);
+            var result = sayHello.Invoke(instance, Name);
+            listBox1.Items.Add(result);
+        }
+    }
 
     public class Root
     {

@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.33627.172
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConsole", "MyConsole\MyConsole.csproj", "{E4641856-27FF-4059-A52C-3BDBA1103A7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyWinForm", "MyWinForm\MyWinForm.csproj", "{614E67BC-C0D2-4FFB-AEA9-F5C1EAA0114B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWinForm", "MyWinForm\MyWinForm.csproj", "{614E67BC-C0D2-4FFB-AEA9-F5C1EAA0114B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
