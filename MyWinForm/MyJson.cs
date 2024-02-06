@@ -63,7 +63,7 @@ namespace MyWinForm
         {
             Assembly assembly = Assembly.LoadFile("C:\\Users\\байбатыровм\\Source\\Repos\\SEP_231_CS\\MyDLL\\bin\\Debug\\net6.0\\MyDLL.dll");
             Type type = assembly.GetType("MyDLL.MyClass");
-            MethodInfo sayHello = type.GetMethod("SayHello3213213");
+            MethodInfo sayHello = type.GetMethod("SayHello");
             object[] Name = { "World" };
             var instance = Activator.CreateInstance(type);
             var result = sayHello.Invoke(instance, Name);
