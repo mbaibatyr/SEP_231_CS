@@ -79,7 +79,63 @@ namespace MyWinForm
         {
             del(name);
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+
+            Text = comboBox1.SelectedIndex.ToString();
+            //Math.Pow(2, 2);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //List<string> lst = new List<string>();
+            //var result = lst.Where(z => z.StartsWith("T"));
+            ////MyAction.Print("hello", "step");
+            //Text = MyAction.Print3("hell").ToString();
+
+            var result = CallDelegate2(z => z.StartsWith("T"), new List<string>() { });
+
+        }
+
+        IEnumerable<string> CallDelegate2(Func<string, bool> func, List<string> lst)
+        {
+            return lst.Where(func);
+        }
+
     }
+
+    class MyAction
+    {
+
+        public static void Print(string st1, string st2)
+        {
+            Action<string, string> act1 = (a, b) =>
+            {
+                MessageBox.Show(a + " " + b);
+            };
+            act1(st1, st2);
+        }
+        public static string Print2(string st1, string st2)
+        {
+            Func<string, string, string> func1 = (a, b) =>
+            {
+                return a + " " + b;
+            };
+            return func1(st1, st2);
+        }
+
+        public static bool Print3(string st)
+        {
+            Predicate<string> pred1 = (a) =>
+            {
+                return a.Length > 5;
+            };
+            return pred1(st);
+        }
+    }
+
 
     delegate void DelegatePrint(string name);
 
