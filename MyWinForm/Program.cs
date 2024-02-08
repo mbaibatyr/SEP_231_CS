@@ -9,7 +9,7 @@ namespace MyWinForm
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Application.Run(new MyJson());
+            Application.Run(new MyDelegate());
         }
     }
 }

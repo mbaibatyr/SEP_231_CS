@@ -10,7 +10,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Dll = MyDLL;
+//using Dll = MyDLL;
 
 
 namespace MyWinForm
@@ -55,8 +55,8 @@ namespace MyWinForm
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Dll.MyClass myClass = new Dll.MyClass();
-            listBox1.Items.Add(myClass.SayHello("step"));
+            //Dll.MyClass myClass = new Dll.MyClass();
+            //listBox1.Items.Add(myClass.SayHello("step"));
         }
 
         private void button4_Click(object sender, EventArgs e)
