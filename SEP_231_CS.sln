@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyConsole", "MyConsole\MyCo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWinForm", "MyWinForm\MyWinForm.csproj", "{614E67BC-C0D2-4FFB-AEA9-F5C1EAA0114B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLib2", "MyLib2\MyLib2.csproj", "{B82DA51E-5F37-4514-B949-17291D280DA8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{614E67BC-C0D2-4FFB-AEA9-F5C1EAA0114B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{614E67BC-C0D2-4FFB-AEA9-F5C1EAA0114B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{614E67BC-C0D2-4FFB-AEA9-F5C1EAA0114B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B82DA51E-5F37-4514-B949-17291D280DA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B82DA51E-5F37-4514-B949-17291D280DA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B82DA51E-5F37-4514-B949-17291D280DA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B82DA51E-5F37-4514-B949-17291D280DA8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

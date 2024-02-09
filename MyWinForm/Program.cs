@@ -9,7 +9,7 @@ namespace MyWinForm
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            Application.Run(new MyDelegate());
+            Application.Run(new MyEnum());
         }
     }
 }
